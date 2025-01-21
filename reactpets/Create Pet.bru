@@ -1,0 +1,19 @@
+meta {
+  name: Create Pet
+  type: http
+  seq: 4
+}
+
+post {
+  url: http://localhost:3000/pets
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "name": "slow",
+    "age": 30,
+    "breed": "turtle"
+  }
+}

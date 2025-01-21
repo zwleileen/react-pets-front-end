@@ -1,0 +1,23 @@
+meta {
+  name: Delete Pet
+  type: http
+  seq: 6
+}
+
+delete {
+  url: http://localhost:3000/pets/:petId
+  body: json
+  auth: none
+}
+
+params:path {
+  petId: c6eb
+}
+
+body:json {
+  {
+    "name": "fat",
+    "age": 30,
+    "breed": "youzi"
+  }
+}
