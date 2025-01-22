@@ -11,6 +11,8 @@ const PetEditForm = (props) => {
         age: "",
         id: ""
     })
+
+    //Notes: Runs when the component first mounts AND whenever props.pets or petId changes (because they're in the dependency array)
     useEffect(() => {
         const pet = props.pets.find(p => p.id === petId);
         if (pet) { 
