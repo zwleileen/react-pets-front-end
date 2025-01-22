@@ -17,6 +17,8 @@ const PetDetails = (props) => {
             <dt>Age: </dt>
             <dd>{pet.age} years old</dd>
         </dl>
+            <button>Edit</button>
+            <button>Delete</button>
         </>
     )
 }

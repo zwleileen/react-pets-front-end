@@ -2,7 +2,7 @@ import { NavLink, Outlet, useNavigate } from "react-router-dom";
 
 const PetList = (props) => {
     const navigate = useNavigate();
-    
+
 
     return(
         <>
@@ -17,8 +17,6 @@ const PetList = (props) => {
 
         <div className="petdetail">
             <Outlet/>
-            <button>Edit</button>
-            <button>Delete</button>
         </div>
         </>
     )

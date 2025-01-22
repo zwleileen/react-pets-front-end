@@ -21,7 +21,6 @@ const App = () => {
     const data = await petService.show();
     setPets(data);
   }
-  console.log(pets)
 
   function generateId() {
     const characters = '0123456789abcdef';
