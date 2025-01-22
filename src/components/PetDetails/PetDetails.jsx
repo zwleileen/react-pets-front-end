@@ -24,7 +24,7 @@ const PetDetails = (props) => {
             <dt>Age: </dt>
             <dd>{pet.age} years old</dd>
         </dl>
-            <button>Edit</button>
+            <button onClick={()=>navigate(`/pets/${petId}/edit`)}>Edit</button>
             <button onClick={handleDelete}>Delete</button>
         </>
     )

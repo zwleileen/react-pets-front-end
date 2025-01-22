@@ -8,6 +8,7 @@ import PetDetails from "./components/PetDetails/PetDetails";
 import PetForm from "./components/PetForm/PetForm";
 import * as petService from './services/petService';
 import { useEffect } from "react";
+import PetEditForm from "./components/PetEditForm/PetEditForm";
 
 const App = () => {
 
@@ -44,6 +45,12 @@ const App = () => {
     setPets(pets.filter((pet) => pet.id !== idToDelete))}
   }
 
+  const editPet = async (updatedPet) => {
+    const edited = await petService.update(updatedPet.id, updatedPet);
+    if (edited) {
+      setPets(pets.map(pet => pet.id === updatedPet.id ? updatedPet : pet));
+    }};
+
   return (
     <>
     <Routes>
@@ -51,6 +58,7 @@ const App = () => {
       <Route path="/pets" element={<PetList fetchData={fetchData} pets={pets}/>}>
         <Route path=":petId" element={<PetDetails fetchData={fetchData} pets={pets} deletePet={deletePet}/>}/>
         <Route path="new" element={<PetForm fetchData={fetchData} addPet={addPet}/>} />
+        <Route path=":petId/edit" element={<PetEditForm pets={pets} editPet={editPet}/>} />
       </Route>
     </Routes>
     </>

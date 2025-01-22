@@ -29,12 +29,6 @@
       "age": 1,
       "breed": "Beagle",
       "id": "a183"
-    },
-    {
-      "name": "fat",
-      "age": 30,
-      "breed": "youzi",
-      "id": "b9d1"
     }
   ]
 }

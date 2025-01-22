@@ -16,14 +16,14 @@ async function index() {
   }
 }
 
-async function create(newPet) {
+async function create(formData) {
   try {
     const response = await fetch(BASE_URL, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(newPet),
+      body: JSON.stringify(formData),
     });
     if (!response.ok) {
       throw new Error(`Response status: ${response.status}`);
@@ -50,4 +50,24 @@ async function deletePet(id) {
   }
 }
 
-export { index, create, deletePet };
+async function update(id, updatedPet) {
+  const url = `${BASE_URL}/${id}`;
+  try {
+    const response = await fetch(url, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(updatedPet),
+    });
+    if (!response.ok) {
+      throw new Error(`Response status: ${response.status}`);
+    }
+    const json = await response.json();
+    return json;
+  } catch (error) {
+    console.error(error.message);
+  }
+}
+
+export { index, create, deletePet, update };
