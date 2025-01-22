@@ -1,11 +1,18 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 const PetDetails = (props) => {
+
+    const navigate = useNavigate()
 
     const { petId } = useParams();
     const pet = props.pets.find(p => p.id === petId);
 
     if (!pet) return <div>Pet not found</div>;
+
+    const handleDelete = () => {
+        props.deletePet(pet.id);
+        navigate('/pets');
+    }
 
 
     return (
@@ -18,7 +25,7 @@ const PetDetails = (props) => {
             <dd>{pet.age} years old</dd>
         </dl>
             <button>Edit</button>
-            <button>Delete</button>
+            <button onClick={handleDelete}>Delete</button>
         </>
     )
 }

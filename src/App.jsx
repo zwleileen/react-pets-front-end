@@ -18,7 +18,7 @@ const App = () => {
   }, []);
 
   const fetchData = async () => {
-    const data = await petService.show();
+    const data = await petService.index();
     setPets(data);
   }
 
@@ -31,9 +31,17 @@ const App = () => {
     return id;
   }
 
-  const addPet = (formData) => {
+  const addPet = async (formData) => {
     formData.id = generateId()
-    setPets([...pets, formData])
+    const newPet = await petService.create(formData);
+    if(newPet) {
+    setPets([...pets, newPet])};
+  }
+
+  const deletePet = async (idToDelete) => {
+    const deleted = await petService.deletePet(idToDelete);
+    if (deleted) {
+    setPets(pets.filter((pet) => pet.id !== idToDelete))}
   }
 
   return (
@@ -41,7 +49,7 @@ const App = () => {
     <Routes>
       <Route path="/" element={<Navigate to="/pets" />} />
       <Route path="/pets" element={<PetList fetchData={fetchData} pets={pets}/>}>
-        <Route path=":petId" element={<PetDetails fetchData={fetchData} pets={pets}/>}/>
+        <Route path=":petId" element={<PetDetails fetchData={fetchData} pets={pets} deletePet={deletePet}/>}/>
         <Route path="new" element={<PetForm fetchData={fetchData} addPet={addPet}/>} />
       </Route>
     </Routes>
