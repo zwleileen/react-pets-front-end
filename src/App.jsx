@@ -3,7 +3,7 @@
 import { useState } from "react";
 import PetList from "./components/PetList/PetList";
 import { Navigate, Route, Routes } from "react-router-dom";
-import NavBar from "./components/NavBar/NavBar";
+// import NavBar from "./components/NavBar/NavBar";
 import PetDetails from "./components/PetDetails/PetDetails";
 import PetForm from "./components/PetForm/PetForm";
 import * as petService from './services/petService';
